@@ -1,0 +1,1 @@
+target_sources(neat_test PUBLIC main.cpp)

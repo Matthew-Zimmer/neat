@@ -2,19 +2,21 @@ cmake_minimum_required(VERSION 3.13)
 
 project(neat)
 
-add_library(neat "")
+add_library(neat)
+add_library(neat_test)
 
 add_subdirectory(include)
 add_subdirectory(src)
+add_subdirectory(test)
 
 target_compile_features(neat PUBLIC cxx_std_17)
+target_compile_features(neat_test PUBLIC cxx_std_17)
 
 #Set(CMAKE_CXX_FLAGS "-Wall" "-Wextra")
 
 install(TARGETS neat EXPORT neat DESTINATION lib/neat)
 install(EXPORT neat DESTINATION lib/)
 install(FILES neat-config.cmake DESTINATION lib/neat)
-
 
 #libs
 #find_Package(LIB REQUIRED)

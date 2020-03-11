@@ -45,9 +45,12 @@
         "bit": "cpp",
         "compare": "cpp",
         "concepts": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "cstring": "cpp",
+        "cinttypes": "cpp"
     },
     "cSpell.words": [
         "Populator"
-    ]
+    ],
+    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
 }

@@ -1,0 +1,157 @@
+/home/neat/src/main.cpp: In instantiation of ‘auto Slate::Machine_Learning::Neural_Network::Evaluatable<Type>::operator()(std::size_t, std::unordered_map<long unsigned int, Input>&) [with Input = Slate::Machine_Learning::Neat::Node; Type = Slate::Machine_Learning::Neat::Brain<My_Org>; std::size_t = long unsigned int]’:
+/home/neat/src/main.cpp:65:56:   required from ‘auto Slate::Machine_Learning::Neural_Network::Evaluatable<Type>::operator()(const Slate::Math::Vector<Dim, Input>&) [with long unsigned int Dim = 1; Input = Slate::Machine_Learning::Neat::Node; Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
+/home/neat/src/main.cpp:369:78:   required from ‘void Slate::Machine_Learning::Neat::Evaluator<Type>::evaluate() [with Type = My_Org]’
+/home/neat/src/main.cpp:175:21:   required from ‘void Slate::Machine_Learning::Genetic::Evaluator<Type>::evaluate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:227:17:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/home/neat/src/main.cpp:51:59: error: invalid use of ‘void’
+   51 |                     auto& inputs = Meta::cast<Type>(*this)[id].inputs();
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~^
+/home/neat/src/main.cpp: In instantiation of ‘auto Slate::Machine_Learning::Neural_Network::Evaluatable<Type>::operator()(const Slate::Math::Vector<Dim, Input>&) [with long unsigned int Dim = 1; Input = Slate::Machine_Learning::Neat::Node; Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’:
+/home/neat/src/main.cpp:369:78:   required from ‘void Slate::Machine_Learning::Neat::Evaluator<Type>::evaluate() [with Type = My_Org]’
+/home/neat/src/main.cpp:175:21:   required from ‘void Slate::Machine_Learning::Genetic::Evaluator<Type>::evaluate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:227:17:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/home/neat/src/main.cpp:65:31: error: cannot convert ‘Slate::Machine_Learning::Neat::Node’ to ‘double’ in assignment
+   65 |                     x.value() = Meta::cast<Type>(*this)(x.id(), values);
+In file included from /home/neat/src/main.cpp:7:
+/usr/local/include/random/random.hpp: In instantiation of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’:
+/home/neat/src/main.cpp:95:47:   required from ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
+/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
+/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/usr/local/include/random/random.hpp:43:30: error: no matching function for call to ‘begin(Slate::Machine_Learning::Neat::Node&)’
+   43 |         auto iter{ std::begin(container) };
+      |                    ~~~~~~~~~~^~~~~~~~~~~
+In file included from /usr/include/c++/9.3.0/utility:76,
+                 from /usr/include/c++/9.3.0/bits/stl_uninitialized.h:60,
+                 from /usr/include/c++/9.3.0/vector:66,
+                 from /home/neat/src/main.cpp:2:
+/usr/include/c++/9.3.0/initializer_list:89:5: note: candidate: ‘template<class _Tp> constexpr const _Tp* std::begin(std::initializer_list<_Tp>)’
+   89 |     begin(initializer_list<_Tp> __ils) noexcept
+      |     ^~~~~
+/usr/include/c++/9.3.0/initializer_list:89:5: note:   template argument deduction/substitution failed:
+In file included from /home/neat/src/main.cpp:7:
+/usr/local/include/random/random.hpp:43:30: note:   ‘Slate::Machine_Learning::Neat::Node’ is not derived from ‘std::initializer_list<_Tp>’
+   43 |         auto iter{ std::begin(container) };
+      |                    ~~~~~~~~~~^~~~~~~~~~~
+In file included from /usr/include/c++/9.3.0/vector:69,
+                 from /home/neat/src/main.cpp:2:
+/usr/include/c++/9.3.0/bits/range_access.h:48:5: note: candidate: ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(_Container&)’
+   48 |     begin(_Container& __cont) -> decltype(__cont.begin())
+      |     ^~~~~
+/usr/include/c++/9.3.0/bits/range_access.h:48:5: note:   template argument deduction/substitution failed:
+/usr/include/c++/9.3.0/bits/range_access.h: In substitution of ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(_Container&) [with _Container = Slate::Machine_Learning::Neat::Node]’:
+/usr/local/include/random/random.hpp:43:30:   required from ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’
+/home/neat/src/main.cpp:95:47:   required from ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
+/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
+/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/usr/include/c++/9.3.0/bits/range_access.h:48:50: error: ‘class Slate::Machine_Learning::Neat::Node’ has no member named ‘begin’
+   48 |     begin(_Container& __cont) -> decltype(__cont.begin())
+      |                                           ~~~~~~~^~~~~
+/usr/local/include/random/random.hpp: In instantiation of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’:
+/home/neat/src/main.cpp:95:47:   required from ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
+/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
+/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/usr/include/c++/9.3.0/bits/range_access.h:58:5: note: candidate: ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(const _Container&)’
+   58 |     begin(const _Container& __cont) -> decltype(__cont.begin())
+      |     ^~~~~
+/usr/include/c++/9.3.0/bits/range_access.h:58:5: note:   template argument deduction/substitution failed:
+/usr/include/c++/9.3.0/bits/range_access.h: In substitution of ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(const _Container&) [with _Container = Slate::Machine_Learning::Neat::Node]’:
+/usr/local/include/random/random.hpp:43:30:   required from ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’
+/home/neat/src/main.cpp:95:47:   required from ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
+/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
+/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/usr/include/c++/9.3.0/bits/range_access.h:58:56: error: ‘const class Slate::Machine_Learning::Neat::Node’ has no member named ‘begin’
+   58 |     begin(const _Container& __cont) -> decltype(__cont.begin())
+      |                                                 ~~~~~~~^~~~~
+/usr/local/include/random/random.hpp: In instantiation of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’:
+/home/neat/src/main.cpp:95:47:   required from ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
+/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
+/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/usr/include/c++/9.3.0/bits/range_access.h:87:5: note: candidate: ‘template<class _Tp, long unsigned int _Nm> constexpr _Tp* std::begin(_Tp (&)[_Nm])’
+   87 |     begin(_Tp (&__arr)[_Nm])
+      |     ^~~~~
+/usr/include/c++/9.3.0/bits/range_access.h:87:5: note:   template argument deduction/substitution failed:
+In file included from /home/neat/src/main.cpp:7:
+/usr/local/include/random/random.hpp:43:30: note:   mismatched types ‘_Tp [_Nm]’ and ‘Slate::Machine_Learning::Neat::Node’
+   43 |         auto iter{ std::begin(container) };
+      |                    ~~~~~~~~~~^~~~~~~~~~~
+In file included from /usr/include/c++/9.3.0/vector:69,
+                 from /home/neat/src/main.cpp:2:
+/usr/include/c++/9.3.0/bits/range_access.h:104:31: note: candidate: ‘template<class _Tp> _Tp* std::begin(std::valarray<_Tp>&)’
+  104 |   template<typename _Tp> _Tp* begin(valarray<_Tp>&);
+      |                               ^~~~~
+/usr/include/c++/9.3.0/bits/range_access.h:104:31: note:   template argument deduction/substitution failed:
+In file included from /home/neat/src/main.cpp:7:
+/usr/local/include/random/random.hpp:43:30: note:   ‘Slate::Machine_Learning::Neat::Node’ is not derived from ‘std::valarray<_Tp>’
+   43 |         auto iter{ std::begin(container) };
+      |                    ~~~~~~~~~~^~~~~~~~~~~
+In file included from /usr/include/c++/9.3.0/vector:69,
+                 from /home/neat/src/main.cpp:2:
+/usr/include/c++/9.3.0/bits/range_access.h:105:37: note: candidate: ‘template<class _Tp> const _Tp* std::begin(const std::valarray<_Tp>&)’
+  105 |   template<typename _Tp> const _Tp* begin(const valarray<_Tp>&);
+      |                                     ^~~~~
+/usr/include/c++/9.3.0/bits/range_access.h:105:37: note:   template argument deduction/substitution failed:
+In file included from /home/neat/src/main.cpp:7:
+/usr/local/include/random/random.hpp:43:30: note:   ‘Slate::Machine_Learning::Neat::Node’ is not derived from ‘const std::valarray<_Tp>’
+   43 |         auto iter{ std::begin(container) };
+      |                    ~~~~~~~~~~^~~~~~~~~~~
+/usr/local/include/random/random.hpp:44:61: error: ‘class Slate::Machine_Learning::Neat::Node’ has no member named ‘size’
+   44 |         std::advance(iter, number<std::size_t>(0, container.size()));
+      |                                                   ~~~~~~~~~~^~~~
+/home/neat/src/main.cpp: In instantiation of ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’:
+/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
+/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/home/neat/src/main.cpp:95:47: error: use of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’ before deduction of ‘auto’
+   95 |                 auto& inputs = Random::element(Meta::cast<Type>(*this).nodes()).inputs();
+      |                                ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/neat/src/main.cpp: In instantiation of ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_change_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’:
+/home/neat/src/main.cpp:340:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
+/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/home/neat/src/main.cpp:101:47: error: use of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’ before deduction of ‘auto’
+  101 |                 auto& inputs = Random::element(Meta::cast<Type>(*this).nodes()).inputs();
+      |                                ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/neat/src/main.cpp: In instantiation of ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_add_connection() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’:
+/home/neat/src/main.cpp:341:92:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
+/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/home/neat/src/main.cpp:107:51: error: use of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’ before deduction of ‘auto’
+  107 |                 auto& input_node = Random::element(Meta::cast<Type>(*this).nodes());
+      |                                    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/neat/src/main.cpp: In instantiation of ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_add_node() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’:
+/home/neat/src/main.cpp:342:86:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
+/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
+/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
+/home/neat/src/main.cpp:430:21:   required from here
+/home/neat/src/main.cpp:113:45: error: use of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’ before deduction of ‘auto’
+  113 |                 auto& node = Random::element(Meta::cast<Type>(*this).nodes());
+      |                              ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make[2]: *** [CMakeFiles/neat.dir/build.make:63: CMakeFiles/neat.dir/src/main.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:167: CMakeFiles/neat.dir/all] Error 2
+make: *** [Makefile:130: all] Error 2

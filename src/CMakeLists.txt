@@ -1,1 +1,1 @@
-target_sources(neat PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/main.cpp>")
+#target_sources(neat PUBLIC "$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/main.cpp>")

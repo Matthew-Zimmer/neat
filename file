@@ -1,157 +1,1000 @@
-/home/neat/src/main.cpp: In instantiation of ‘auto Slate::Machine_Learning::Neural_Network::Evaluatable<Type>::operator()(std::size_t, std::unordered_map<long unsigned int, Input>&) [with Input = Slate::Machine_Learning::Neat::Node; Type = Slate::Machine_Learning::Neat::Brain<My_Org>; std::size_t = long unsigned int]’:
-/home/neat/src/main.cpp:65:56:   required from ‘auto Slate::Machine_Learning::Neural_Network::Evaluatable<Type>::operator()(const Slate::Math::Vector<Dim, Input>&) [with long unsigned int Dim = 1; Input = Slate::Machine_Learning::Neat::Node; Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
-/home/neat/src/main.cpp:369:78:   required from ‘void Slate::Machine_Learning::Neat::Evaluator<Type>::evaluate() [with Type = My_Org]’
-/home/neat/src/main.cpp:175:21:   required from ‘void Slate::Machine_Learning::Genetic::Evaluator<Type>::evaluate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:227:17:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/home/neat/src/main.cpp:51:59: error: invalid use of ‘void’
-   51 |                     auto& inputs = Meta::cast<Type>(*this)[id].inputs();
-      |                                    ~~~~~~~~~~~~~~~~~~~~~~~^
-/home/neat/src/main.cpp: In instantiation of ‘auto Slate::Machine_Learning::Neural_Network::Evaluatable<Type>::operator()(const Slate::Math::Vector<Dim, Input>&) [with long unsigned int Dim = 1; Input = Slate::Machine_Learning::Neat::Node; Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’:
-/home/neat/src/main.cpp:369:78:   required from ‘void Slate::Machine_Learning::Neat::Evaluator<Type>::evaluate() [with Type = My_Org]’
-/home/neat/src/main.cpp:175:21:   required from ‘void Slate::Machine_Learning::Genetic::Evaluator<Type>::evaluate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:227:17:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/home/neat/src/main.cpp:65:31: error: cannot convert ‘Slate::Machine_Learning::Neat::Node’ to ‘double’ in assignment
-   65 |                     x.value() = Meta::cast<Type>(*this)(x.id(), values);
-In file included from /home/neat/src/main.cpp:7:
-/usr/local/include/random/random.hpp: In instantiation of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’:
-/home/neat/src/main.cpp:95:47:   required from ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
-/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
-/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/usr/local/include/random/random.hpp:43:30: error: no matching function for call to ‘begin(Slate::Machine_Learning::Neat::Node&)’
-   43 |         auto iter{ std::begin(container) };
-      |                    ~~~~~~~~~~^~~~~~~~~~~
-In file included from /usr/include/c++/9.3.0/utility:76,
-                 from /usr/include/c++/9.3.0/bits/stl_uninitialized.h:60,
-                 from /usr/include/c++/9.3.0/vector:66,
-                 from /home/neat/src/main.cpp:2:
-/usr/include/c++/9.3.0/initializer_list:89:5: note: candidate: ‘template<class _Tp> constexpr const _Tp* std::begin(std::initializer_list<_Tp>)’
-   89 |     begin(initializer_list<_Tp> __ils) noexcept
-      |     ^~~~~
-/usr/include/c++/9.3.0/initializer_list:89:5: note:   template argument deduction/substitution failed:
-In file included from /home/neat/src/main.cpp:7:
-/usr/local/include/random/random.hpp:43:30: note:   ‘Slate::Machine_Learning::Neat::Node’ is not derived from ‘std::initializer_list<_Tp>’
-   43 |         auto iter{ std::begin(container) };
-      |                    ~~~~~~~~~~^~~~~~~~~~~
-In file included from /usr/include/c++/9.3.0/vector:69,
-                 from /home/neat/src/main.cpp:2:
-/usr/include/c++/9.3.0/bits/range_access.h:48:5: note: candidate: ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(_Container&)’
-   48 |     begin(_Container& __cont) -> decltype(__cont.begin())
-      |     ^~~~~
-/usr/include/c++/9.3.0/bits/range_access.h:48:5: note:   template argument deduction/substitution failed:
-/usr/include/c++/9.3.0/bits/range_access.h: In substitution of ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(_Container&) [with _Container = Slate::Machine_Learning::Neat::Node]’:
-/usr/local/include/random/random.hpp:43:30:   required from ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’
-/home/neat/src/main.cpp:95:47:   required from ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
-/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
-/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/usr/include/c++/9.3.0/bits/range_access.h:48:50: error: ‘class Slate::Machine_Learning::Neat::Node’ has no member named ‘begin’
-   48 |     begin(_Container& __cont) -> decltype(__cont.begin())
-      |                                           ~~~~~~~^~~~~
-/usr/local/include/random/random.hpp: In instantiation of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’:
-/home/neat/src/main.cpp:95:47:   required from ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
-/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
-/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/usr/include/c++/9.3.0/bits/range_access.h:58:5: note: candidate: ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(const _Container&)’
-   58 |     begin(const _Container& __cont) -> decltype(__cont.begin())
-      |     ^~~~~
-/usr/include/c++/9.3.0/bits/range_access.h:58:5: note:   template argument deduction/substitution failed:
-/usr/include/c++/9.3.0/bits/range_access.h: In substitution of ‘template<class _Container> constexpr decltype (__cont.begin()) std::begin(const _Container&) [with _Container = Slate::Machine_Learning::Neat::Node]’:
-/usr/local/include/random/random.hpp:43:30:   required from ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’
-/home/neat/src/main.cpp:95:47:   required from ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
-/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
-/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/usr/include/c++/9.3.0/bits/range_access.h:58:56: error: ‘const class Slate::Machine_Learning::Neat::Node’ has no member named ‘begin’
-   58 |     begin(const _Container& __cont) -> decltype(__cont.begin())
-      |                                                 ~~~~~~~^~~~~
-/usr/local/include/random/random.hpp: In instantiation of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’:
-/home/neat/src/main.cpp:95:47:   required from ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’
-/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
-/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/usr/include/c++/9.3.0/bits/range_access.h:87:5: note: candidate: ‘template<class _Tp, long unsigned int _Nm> constexpr _Tp* std::begin(_Tp (&)[_Nm])’
-   87 |     begin(_Tp (&__arr)[_Nm])
-      |     ^~~~~
-/usr/include/c++/9.3.0/bits/range_access.h:87:5: note:   template argument deduction/substitution failed:
-In file included from /home/neat/src/main.cpp:7:
-/usr/local/include/random/random.hpp:43:30: note:   mismatched types ‘_Tp [_Nm]’ and ‘Slate::Machine_Learning::Neat::Node’
-   43 |         auto iter{ std::begin(container) };
-      |                    ~~~~~~~~~~^~~~~~~~~~~
-In file included from /usr/include/c++/9.3.0/vector:69,
-                 from /home/neat/src/main.cpp:2:
-/usr/include/c++/9.3.0/bits/range_access.h:104:31: note: candidate: ‘template<class _Tp> _Tp* std::begin(std::valarray<_Tp>&)’
-  104 |   template<typename _Tp> _Tp* begin(valarray<_Tp>&);
-      |                               ^~~~~
-/usr/include/c++/9.3.0/bits/range_access.h:104:31: note:   template argument deduction/substitution failed:
-In file included from /home/neat/src/main.cpp:7:
-/usr/local/include/random/random.hpp:43:30: note:   ‘Slate::Machine_Learning::Neat::Node’ is not derived from ‘std::valarray<_Tp>’
-   43 |         auto iter{ std::begin(container) };
-      |                    ~~~~~~~~~~^~~~~~~~~~~
-In file included from /usr/include/c++/9.3.0/vector:69,
-                 from /home/neat/src/main.cpp:2:
-/usr/include/c++/9.3.0/bits/range_access.h:105:37: note: candidate: ‘template<class _Tp> const _Tp* std::begin(const std::valarray<_Tp>&)’
-  105 |   template<typename _Tp> const _Tp* begin(const valarray<_Tp>&);
-      |                                     ^~~~~
-/usr/include/c++/9.3.0/bits/range_access.h:105:37: note:   template argument deduction/substitution failed:
-In file included from /home/neat/src/main.cpp:7:
-/usr/local/include/random/random.hpp:43:30: note:   ‘Slate::Machine_Learning::Neat::Node’ is not derived from ‘const std::valarray<_Tp>’
-   43 |         auto iter{ std::begin(container) };
-      |                    ~~~~~~~~~~^~~~~~~~~~~
-/usr/local/include/random/random.hpp:44:61: error: ‘class Slate::Machine_Learning::Neat::Node’ has no member named ‘size’
-   44 |         std::advance(iter, number<std::size_t>(0, container.size()));
-      |                                                   ~~~~~~~~~~^~~~
-/home/neat/src/main.cpp: In instantiation of ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_adjust_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’:
-/home/neat/src/main.cpp:339:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
-/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/home/neat/src/main.cpp:95:47: error: use of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’ before deduction of ‘auto’
-   95 |                 auto& inputs = Random::element(Meta::cast<Type>(*this).nodes()).inputs();
-      |                                ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/neat/src/main.cpp: In instantiation of ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_change_weight() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’:
-/home/neat/src/main.cpp:340:91:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
-/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/home/neat/src/main.cpp:101:47: error: use of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’ before deduction of ‘auto’
-  101 |                 auto& inputs = Random::element(Meta::cast<Type>(*this).nodes()).inputs();
-      |                                ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/neat/src/main.cpp: In instantiation of ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_add_connection() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’:
-/home/neat/src/main.cpp:341:92:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
-/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/home/neat/src/main.cpp:107:51: error: use of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’ before deduction of ‘auto’
-  107 |                 auto& input_node = Random::element(Meta::cast<Type>(*this).nodes());
-      |                                    ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/neat/src/main.cpp: In instantiation of ‘void Slate::Machine_Learning::Neural_Network::Randomizable<Type>::randomly_add_node() [with Type = Slate::Machine_Learning::Neat::Brain<My_Org>]’:
-/home/neat/src/main.cpp:342:86:   required from ‘void Slate::Machine_Learning::Neat::Mutator<Type>::mutate() [with Type = My_Org]’
-/home/neat/src/main.cpp:215:21:   required from ‘void Slate::Machine_Learning::Genetic::Mutator<Type>::mutate() [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:231:21:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_util(Predicate&&) [with Predicate = Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]::<lambda(const auto:2&)>; Type = Slate::Machine_Learning::Genetic::Specie<My_Org>]’
-/home/neat/src/main.cpp:240:107:   required from ‘auto Slate::Machine_Learning::Genetic::Evolvable<Type>::evolve_for(std::size_t) [with Type = Slate::Machine_Learning::Genetic::Specie<My_Org>; std::size_t = long unsigned int]’
-/home/neat/src/main.cpp:430:21:   required from here
-/home/neat/src/main.cpp:113:45: error: use of ‘auto& Slate::Random::element(Type&&) [with Type = Slate::Machine_Learning::Neat::Node&]’ before deduction of ‘auto’
-  113 |                 auto& node = Random::element(Meta::cast<Type>(*this).nodes());
-      |                              ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-make[2]: *** [CMakeFiles/neat.dir/build.make:63: CMakeFiles/neat.dir/src/main.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:167: CMakeFiles/neat.dir/all] Error 2
-make: *** [Makefile:130: all] Error 2
+1, 57428
+2, 57317
+3, 57260
+4, 57260
+5, 57255
+6, 57256
+7, 57256
+8, 57256
+9, 57256
+10, 57256
+11, 57256
+12, 57256
+13, 57256
+14, 57256
+15, 57256
+16, 57256
+17, 57256
+18, 57256
+19, 57256
+20, 57256
+21, 57256
+22, 57256
+23, 57256
+24, 57256
+25, 57256
+26, 57256
+27, 57256
+28, 57256
+29, 57256
+30, 57256
+31, 57256
+32, 57256
+33, 57256
+34, 57256
+35, 57256
+36, 57256
+37, 57256
+38, 57256
+39, 57256
+40, 57256
+41, 57256
+42, 57256
+43, 57256
+44, 57256
+45, 57256
+46, 57256
+47, 57256
+48, 57256
+49, 57256
+50, 57256
+51, 57256
+52, 57256
+53, 57256
+54, 57256
+55, 57256
+56, 57256
+57, 57256
+58, 57256
+59, 57256
+60, 57256
+61, 57256
+62, 57256
+63, 57256
+64, 57256
+65, 57256
+66, 57256
+67, 57256
+68, 57256
+69, 57256
+70, 57256
+71, 57256
+72, 57256
+73, 57256
+74, 57256
+75, 57256
+76, 57256
+77, 57256
+78, 57256
+79, 57256
+80, 57256
+81, 57256
+82, 57256
+83, 57256
+84, 57256
+85, 57256
+86, 57256
+87, 57256
+88, 57256
+89, 57256
+90, 57256
+91, 57256
+92, 57256
+93, 57256
+94, 57256
+95, 57256
+96, 57256
+97, 57256
+98, 57256
+99, 57256
+100, 57256
+101, 57256
+102, 57256
+103, 57256
+104, 57256
+105, 57256
+106, 57256
+107, 57256
+108, 57256
+109, 57256
+110, 57256
+111, 57256
+112, 57256
+113, 57256
+114, 57256
+115, 57256
+116, 57256
+117, 57256
+118, 57256
+119, 57256
+120, 57256
+121, 57256
+122, 57256
+123, 57256
+124, 57256
+125, 57256
+126, 57256
+127, 57256
+128, 57256
+129, 57256
+130, 57256
+131, 57256
+132, 57256
+133, 57256
+134, 57256
+135, 57256
+136, 57256
+137, 57256
+138, 57256
+139, 57256
+140, 57256
+141, 57256
+142, 57256
+143, 57256
+144, 57256
+145, 57256
+146, 57256
+147, 57256
+148, 57256
+149, 57256
+150, 57256
+151, 57256
+152, 57256
+153, 57256
+154, 57256
+155, 57256
+156, 57256
+157, 57256
+158, 57256
+159, 57256
+160, 57256
+161, 57256
+162, 57256
+163, 57256
+164, 57256
+165, 57256
+166, 57256
+167, 57256
+168, 57256
+169, 57256
+170, 57256
+171, 57256
+172, 57256
+173, 57256
+174, 57256
+175, 57256
+176, 57256
+177, 57256
+178, 57256
+179, 57256
+180, 57256
+181, 57256
+182, 57256
+183, 57256
+184, 57256
+185, 57256
+186, 57256
+187, 57256
+188, 57256
+189, 57256
+190, 57256
+191, 57256
+192, 57256
+193, 57256
+194, 57256
+195, 57256
+196, 57256
+197, 57256
+198, 57256
+199, 57256
+200, 57256
+201, 57256
+202, 57256
+203, 57256
+204, 57256
+205, 57256
+206, 57256
+207, 57256
+208, 57256
+209, 57256
+210, 57256
+211, 57256
+212, 57256
+213, 57256
+214, 57256
+215, 57256
+216, 57256
+217, 57256
+218, 57256
+219, 57256
+220, 57256
+221, 57256
+222, 57256
+223, 57256
+224, 57256
+225, 57256
+226, 57256
+227, 57256
+228, 57256
+229, 57256
+230, 57256
+231, 57256
+232, 57256
+233, 57256
+234, 57256
+235, 57256
+236, 57256
+237, 57256
+238, 57256
+239, 57256
+240, 57256
+241, 57256
+242, 57256
+243, 57256
+244, 57256
+245, 57256
+246, 57256
+247, 57256
+248, 57256
+249, 57256
+250, 57256
+251, 57256
+252, 57256
+253, 57256
+254, 57256
+255, 57256
+256, 57256
+257, 57256
+258, 57256
+259, 57256
+260, 57256
+261, 57256
+262, 57256
+263, 57256
+264, 57256
+265, 57256
+266, 57256
+267, 57256
+268, 57256
+269, 57256
+270, 57256
+271, 57256
+272, 57256
+273, 57256
+274, 57256
+275, 57256
+276, 57256
+277, 57256
+278, 57256
+279, 57256
+280, 57256
+281, 57256
+282, 57256
+283, 57256
+284, 57256
+285, 57256
+286, 57256
+287, 57256
+288, 57256
+289, 57256
+290, 57256
+291, 57256
+292, 57256
+293, 57256
+294, 57256
+295, 57256
+296, 57256
+297, 57256
+298, 57256
+299, 57256
+300, 57256
+301, 57256
+302, 57256
+303, 57256
+304, 57256
+305, 57256
+306, 57256
+307, 57256
+308, 57256
+309, 57256
+310, 57256
+311, 57256
+312, 57256
+313, 57256
+314, 57256
+315, 57256
+316, 57256
+317, 57256
+318, 57256
+319, 57256
+320, 57256
+321, 57256
+322, 57256
+323, 57256
+324, 57256
+325, 57256
+326, 57256
+327, 57256
+328, 57256
+329, 57256
+330, 57256
+331, 57256
+332, 57256
+333, 57256
+334, 57256
+335, 57256
+336, 57256
+337, 57256
+338, 57256
+339, 57256
+340, 57256
+341, 57256
+342, 57256
+343, 57256
+344, 57256
+345, 57256
+346, 57256
+347, 57256
+348, 57256
+349, 57256
+350, 57256
+351, 57256
+352, 57256
+353, 57256
+354, 57256
+355, 57256
+356, 57256
+357, 57256
+358, 57256
+359, 57256
+360, 57256
+361, 57256
+362, 57256
+363, 57256
+364, 57256
+365, 57256
+366, 57256
+367, 57256
+368, 57256
+369, 57256
+370, 57256
+371, 57256
+372, 57256
+373, 57256
+374, 57256
+375, 57256
+376, 57256
+377, 57256
+378, 57256
+379, 57256
+380, 57256
+381, 57256
+382, 57256
+383, 57256
+384, 57256
+385, 57256
+386, 57256
+387, 57256
+388, 57256
+389, 57256
+390, 57256
+391, 57256
+392, 57256
+393, 57256
+394, 57256
+395, 57256
+396, 57256
+397, 57256
+398, 57256
+399, 57256
+400, 57256
+401, 57256
+402, 57256
+403, 57256
+404, 57256
+405, 57256
+406, 57256
+407, 57256
+408, 57256
+409, 57256
+410, 57256
+411, 57256
+412, 57256
+413, 57256
+414, 57256
+415, 57256
+416, 57256
+417, 57256
+418, 57256
+419, 57256
+420, 57256
+421, 57256
+422, 57256
+423, 57256
+424, 57256
+425, 57256
+426, 57256
+427, 57256
+428, 57256
+429, 57256
+430, 57256
+431, 57256
+432, 57256
+433, 57256
+434, 57256
+435, 57256
+436, 57256
+437, 57256
+438, 57256
+439, 57256
+440, 57256
+441, 57256
+442, 57256
+443, 57256
+444, 57256
+445, 57256
+446, 57256
+447, 57256
+448, 57256
+449, 57256
+450, 57256
+451, 57256
+452, 57256
+453, 57256
+454, 57256
+455, 57256
+456, 57256
+457, 57256
+458, 57256
+459, 57256
+460, 57256
+461, 57256
+462, 57256
+463, 57256
+464, 57256
+465, 57256
+466, 57256
+467, 57256
+468, 57256
+469, 57256
+470, 57256
+471, 57256
+472, 57256
+473, 57256
+474, 57256
+475, 57256
+476, 57256
+477, 57256
+478, 57256
+479, 57256
+480, 57256
+481, 57256
+482, 57256
+483, 57256
+484, 57256
+485, 57256
+486, 57256
+487, 57256
+488, 57256
+489, 57256
+490, 57256
+491, 57256
+492, 57256
+493, 57256
+494, 57256
+495, 57256
+496, 57256
+497, 57256
+498, 57256
+499, 57256
+500, 57256
+501, 57256
+502, 57256
+503, 57256
+504, 57256
+505, 57256
+506, 57256
+507, 57256
+508, 57256
+509, 57256
+510, 57256
+511, 57256
+512, 57256
+513, 57256
+514, 57256
+515, 57256
+516, 57256
+517, 57256
+518, 57256
+519, 57256
+520, 57256
+521, 57256
+522, 57256
+523, 57256
+524, 57256
+525, 57256
+526, 57256
+527, 57256
+528, 57256
+529, 57256
+530, 57256
+531, 57256
+532, 57256
+533, 57256
+534, 57256
+535, 57256
+536, 57256
+537, 57256
+538, 57256
+539, 57256
+540, 57256
+541, 57256
+542, 57256
+543, 57256
+544, 57256
+545, 57256
+546, 57256
+547, 57256
+548, 57256
+549, 57256
+550, 57256
+551, 57256
+552, 57256
+553, 57256
+554, 57256
+555, 57256
+556, 57256
+557, 57256
+558, 57256
+559, 57256
+560, 57256
+561, 57256
+562, 57256
+563, 57256
+564, 57256
+565, 57256
+566, 57256
+567, 57256
+568, 57256
+569, 57256
+570, 57256
+571, 57256
+572, 57256
+573, 57256
+574, 57256
+575, 57256
+576, 57256
+577, 57256
+578, 57256
+579, 57256
+580, 57256
+581, 57256
+582, 57256
+583, 57256
+584, 57256
+585, 57256
+586, 57256
+587, 57256
+588, 57256
+589, 57256
+590, 57256
+591, 57256
+592, 57256
+593, 57256
+594, 57256
+595, 57256
+596, 57256
+597, 57256
+598, 57256
+599, 57256
+600, 57256
+601, 57256
+602, 57256
+603, 57256
+604, 57256
+605, 57256
+606, 57256
+607, 57256
+608, 57256
+609, 57256
+610, 57256
+611, 57256
+612, 57256
+613, 57256
+614, 57256
+615, 57256
+616, 57256
+617, 57256
+618, 57256
+619, 57256
+620, 57256
+621, 57256
+622, 57256
+623, 57256
+624, 57256
+625, 57256
+626, 57256
+627, 57256
+628, 57256
+629, 57256
+630, 57256
+631, 57256
+632, 57256
+633, 57256
+634, 57256
+635, 57256
+636, 57256
+637, 57256
+638, 57256
+639, 57256
+640, 57256
+641, 57256
+642, 57256
+643, 57256
+644, 57256
+645, 57256
+646, 57256
+647, 57256
+648, 57256
+649, 57256
+650, 57256
+651, 57256
+652, 57256
+653, 57256
+654, 57256
+655, 57256
+656, 57256
+657, 57256
+658, 57256
+659, 57256
+660, 57256
+661, 57256
+662, 57256
+663, 57256
+664, 57256
+665, 57256
+666, 57256
+667, 57256
+668, 57256
+669, 57256
+670, 57256
+671, 57256
+672, 57256
+673, 57256
+674, 57256
+675, 57256
+676, 57256
+677, 57256
+678, 57256
+679, 57256
+680, 57256
+681, 57256
+682, 57256
+683, 57256
+684, 57256
+685, 57256
+686, 57256
+687, 57256
+688, 57256
+689, 57256
+690, 57256
+691, 57256
+692, 57256
+693, 57256
+694, 57256
+695, 57256
+696, 57256
+697, 57256
+698, 57256
+699, 57256
+700, 57256
+701, 57256
+702, 57256
+703, 57256
+704, 57256
+705, 57256
+706, 57256
+707, 57256
+708, 57256
+709, 57256
+710, 57256
+711, 57256
+712, 57256
+713, 57256
+714, 57256
+715, 57256
+716, 57256
+717, 57256
+718, 57256
+719, 57256
+720, 57256
+721, 57256
+722, 57256
+723, 57256
+724, 57256
+725, 57256
+726, 57256
+727, 57256
+728, 57256
+729, 57256
+730, 57256
+731, 57256
+732, 57256
+733, 57256
+734, 57256
+735, 57256
+736, 57256
+737, 57256
+738, 57256
+739, 57256
+740, 57256
+741, 57256
+742, 57256
+743, 57256
+744, 57256
+745, 57256
+746, 57256
+747, 57256
+748, 57256
+749, 57256
+750, 57256
+751, 57256
+752, 57256
+753, 57256
+754, 57256
+755, 57256
+756, 57256
+757, 57256
+758, 57256
+759, 57256
+760, 57256
+761, 57256
+762, 57256
+763, 57256
+764, 57256
+765, 57256
+766, 57256
+767, 57256
+768, 57256
+769, 57256
+770, 57256
+771, 57256
+772, 57256
+773, 57256
+774, 57256
+775, 57256
+776, 57256
+777, 57256
+778, 57256
+779, 57256
+780, 57256
+781, 57256
+782, 57256
+783, 57256
+784, 57256
+785, 57256
+786, 57256
+787, 57256
+788, 57256
+789, 57256
+790, 57256
+791, 57256
+792, 57256
+793, 57256
+794, 57256
+795, 57256
+796, 57256
+797, 57256
+798, 57256
+799, 57256
+800, 57256
+801, 57256
+802, 57256
+803, 57256
+804, 57256
+805, 57256
+806, 57256
+807, 57256
+808, 57256
+809, 57256
+810, 57256
+811, 57256
+812, 57256
+813, 57256
+814, 57256
+815, 57256
+816, 57256
+817, 57256
+818, 57256
+819, 57256
+820, 57256
+821, 57256
+822, 57256
+823, 57256
+824, 57256
+825, 57256
+826, 57256
+827, 57256
+828, 57256
+829, 57256
+830, 57256
+831, 57256
+832, 57256
+833, 57256
+834, 57256
+835, 57256
+836, 57256
+837, 57256
+838, 57256
+839, 57256
+840, 57256
+841, 57256
+842, 57256
+843, 57256
+844, 57256
+845, 57256
+846, 57256
+847, 57256
+848, 57256
+849, 57256
+850, 57256
+851, 57256
+852, 57256
+853, 57256
+854, 57256
+855, 57256
+856, 57256
+857, 57256
+858, 57256
+859, 57256
+860, 57256
+861, 57256
+862, 57256
+863, 57256
+864, 57256
+865, 57256
+866, 57256
+867, 57256
+868, 57256
+869, 57256
+870, 57256
+871, 57256
+872, 57256
+873, 57256
+874, 57256
+875, 57256
+876, 57256
+877, 57256
+878, 57256
+879, 57256
+880, 57256
+881, 57256
+882, 57256
+883, 57256
+884, 57256
+885, 57256
+886, 57256
+887, 57256
+888, 57256
+889, 57256
+890, 57256
+891, 57256
+892, 57256
+893, 57256
+894, 57256
+895, 57256
+896, 57256
+897, 57256
+898, 57256
+899, 57256
+900, 57256
+901, 57256
+902, 57256
+903, 57256
+904, 57256
+905, 57256
+906, 57256
+907, 57256
+908, 57256
+909, 57256
+910, 57256
+911, 57256
+912, 57256
+913, 57256
+914, 57256
+915, 57256
+916, 57256
+917, 57256
+918, 57256
+919, 57256
+920, 57256
+921, 57256
+922, 57256
+923, 57256
+924, 57256
+925, 57256
+926, 57256
+927, 57256
+928, 57256
+929, 57256
+930, 57256
+931, 57256
+932, 57256
+933, 57256
+934, 57256
+935, 57256
+936, 57256
+937, 57256
+938, 57256
+939, 57256
+940, 57256
+941, 57256
+942, 57256
+943, 57256
+944, 57256
+945, 57256
+946, 57256
+947, 57256
+948, 57256
+949, 57256
+950, 57256
+951, 57256
+952, 57256
+953, 57256
+954, 57256
+955, 57256
+956, 57256
+957, 57256
+958, 57256
+959, 57256
+960, 57256
+961, 57256
+962, 57256
+963, 57256
+964, 57256
+965, 57256
+966, 57256
+967, 57256
+968, 57256
+969, 57256
+970, 57256
+971, 57256
+972, 57256
+973, 57256
+974, 57256
+975, 57256
+976, 57256
+977, 57256
+978, 57256
+979, 57256
+980, 57256
+981, 57256
+982, 57256
+983, 57256
+984, 57256
+985, 57256
+986, 57256
+987, 57256
+988, 57256
+989, 57256
+990, 57256
+991, 57256
+992, 57256
+993, 57256
+994, 57256
+995, 57256
+996, 57256
+997, 57256
+998, 57256
+999, 57256
+1000, 57256

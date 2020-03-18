@@ -47,7 +47,9 @@
         "concepts": "cpp",
         "iostream": "cpp",
         "cstring": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "set": "cpp",
+        "unordered_set": "cpp"
     },
     "cSpell.words": [
         "Populator"

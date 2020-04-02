@@ -2,15 +2,19 @@
 
 #include <ordeal/ordeal.hpp>
 
+#include <iostream>
+
 using namespace Slate;
 using namespace Slate::Machine_Learning;
 using namespace Slate::Ordeal;
 
 class Connection
 {
-    std::size_t iid;
     double w;
+    std::size_t iid;
 public:
+    Connection(double weight) : w{ weight }
+    {}
     auto& input_id()
     {
         return iid;
@@ -29,46 +33,32 @@ public:
     }
 };
 
-class Node
+class My_Node : public Is<My_Node,
+    Variables<
+        Node::V::Id,
+        Node::V::Value>,
+    Features<
+        Node::Connectable>>
 {
-    double v;
-    std::size_t node_id;
-
 public:
-    Node() = default;
-    Node(double v) : v{ v }
+    My_Node(std::size_t id) : Inherit{ Node::V::Id{ id },  Node::V::Value{ 0.0 } }
     {}
 
-    auto& value()
-    {
-        return v;
-    }
-    auto const& value() const
-    {
-        return v;
-    }
-    auto& id()
-    {
-        return node_id;
-    }
-    auto const& id() const
-    {
-        return node_id;
-    }
     auto inputs()
     {
         return std::vector<Connection>{};
     }
 };
 
-class Network : public Is<Network, Variables<Neural_Network::V::Nodes<Node>>, Features<Neural_Network::Dynamic, Neural_Network::Evaluatable, Neural_Network::Sigmoid_Normalization>>
-{
-public:
-    auto outputs()
-    {
-        return Math::Vector<1, Node>{ 0.0 };
-    }
-};
+class Network : public Is<Network, 
+    Variables<
+        Neural_Network::V::Nodes<My_Node>, 
+        Neural_Network::Fixed_Size_Output<My_Node, 1>>, 
+    Features<
+        Neural_Network::Dynamic, 
+        Neural_Network::Evaluatable, 
+        Neural_Network::Sigmoid_Normalization>>
+{};
 
 class Neural_Network_Test : public Unit_Test<Neural_Network_Test>
 {
@@ -76,11 +66,20 @@ class Neural_Network_Test : public Unit_Test<Neural_Network_Test>
 public:
     Neural_Network_Test() : Unit_Test{ "neural network tests" }
     {
-        network[0] = Node{ 0.0 };
+        //using namespace Neural_Network::Literals;
+        network[0] --> network[1] = 0.5;
+        network[1] --> network[2] = 2.0;
     }
 
     auto run(Test<0>)
     {
-        return "dynamic evaluate"_name = Value{ network(Math::Vector<1, Node>{ 1.0 })[0].value() } == Expected_Value{ 0.85 }.within(0.01);
+        return "sigmoid normalization"_name = Value{ network.normalize(1.0) } == Expected_Value{ 0.73 }.within(0.01);
+    }
+
+    auto run(Test<1>)
+    {
+        double d = network(My_Node{ 1 })[0].value();
+        std::cout << d << std::endl;
+        return "dynamic evaluate"_name = Value{ d } == Expected_Value{ 1.0 }.within(0.01);
     }
 };

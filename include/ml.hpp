@@ -11,47 +11,85 @@
 #include <reflection/reflection.hpp>
 #include <reflection/variables.hpp>
 
-#include <iostream>
+/*
+    template <typename Type>
+    constexpr bool False = false;
 
-template <typename Type>
-constexpr bool False = false;
+    template <typename Type>
+    void FAIL()
+    {
+        static_assert(False<Type>);
+    }
 
-template <typename Type>
-void FAIL()
-{
-    static_assert(False<Type>);
-}
-
-template <typename Type>
-void FAIL(Type)
-{
-    static_assert(False<Type>);
-}
+    template <typename Type>
+    void FAIL(Type)
+    {
+        static_assert(False<Type>);
+    }
+*/
 
 namespace Slate::Machine_Learning
 {
+    namespace Node
+    {
+        namespace V
+        {
+            using Variable::Base;
+            class Id : public Base<std::size_t>
+            {
+            public:
+                auto& id() { return this->variable(); }
+                auto const& id() const { return this->variable(); }
+            };
+            class Value : public Base<double>
+            {
+            public:
+                auto& value() { return this->variable(); }
+                auto const& value() const { return this->variable(); }
+            };
+        }
+
+        template <typename Type>
+        class Connectable
+        {
+            class Ref_To_Node
+            {
+            public:
+                Type& node;
+            };
+        public:
+            friend auto operator--(Type& obj, int)
+            {
+                return Ref_To_Node{ obj };
+            }
+            friend auto& operator>(Ref_To_Node r, Type& n)
+            {
+                return n.inputs()[r.node.id()];
+            }
+        };
+    }
+
     namespace Neural_Network 
     {
-        namespace Variable
+        namespace V
         {
-            using ::Slate::Variable::Base;
+            using Variable::Base;
             template <typename Type>
-            class Nodes : public Base<std::vector<Type>>
+            class Nodes : public Base<std::unordered_map<std::size_t, Type>>
             {
             public:
                 auto& nodes() { return this->variable(); }
                 auto const& nodes() const { return this->variable(); }
             };
         }
-        namespace V = Variable;
 
         template <typename Type>
         class Dynamic 
         {
         public:
-            auto& operator[](std::size_t index)
+            auto& operator[](std::size_t id)
             {
-                return Meta::cast<Type>(*this).nodes()[index];
+                return Meta::cast<Type>(*this).nodes().try_emplace(id, id).first->second;
             }
         };
 
@@ -85,6 +123,11 @@ namespace Slate::Machine_Learning
                     x.value() = Meta::cast<Type>(*this)(x.id(), values).value();
                 return v;
             }
+            template <typename T, typename ... Types>
+            auto operator()(T&& arg, Types&& ... args) // requires(requires(Type x){ x[0]; })
+            {
+                return Meta::cast<Type>(*this)(Math::Vector<sizeof...(Types) + 1, std::remove_reference_t<T>>{ std::forward<T>(arg), std::forward<Types>(args)... });
+            }
             // template <typename Input>
             // auto operator()(Input const& input) // requires(!requires(Type x){ x[0]; })
             // {
@@ -101,6 +144,57 @@ namespace Slate::Machine_Learning
                 return 1.0 / (1.0 + std::exp(-x));
             }
         };
+
+        template <typename Node_Type, std::size_t Count>
+        class Fixed_Size_Output
+        {
+        public:
+            auto outputs() const
+            {
+                return Math::Vector<Count, Node_Type>{};
+            }
+        };
+
+        // namespace Detail
+        // {
+        //     class Input
+        //     {
+        //     public:
+        //         std::size_t id;
+        //         constexpr explicit Input(std::size_t id) : id{ id }
+        //         {}
+        //     };
+        //     class Output
+        //     {
+        //     public:
+        //         std::size_t id;
+        //         constexpr explicit Output(std::size_t id) : id{ id }
+        //         {}
+        //     };
+        //     class Weight
+        //     {
+        //     public:
+        //         double weight;
+        //         constexpr explicit Weight(double w) : weight{ w }
+        //         {}
+        //     };
+        // }
+
+        // namespace Literals
+        // {
+        //     constexpr Detail::Input operator""_input(unsigned long long num) noexcept
+        //     {
+        //         return Detail::Input{ static_cast<std::size_t>(num) };
+        //     }
+        //     constexpr Detail::Output operator""_output(unsigned long long num) noexcept
+        //     {
+        //         return Detail::Output{ static_cast<std::size_t>(num) };
+        //     }
+        //     constexpr Detail::Weight operator""_weight(long double w) noexcept
+        //     {
+        //         return Detail::Weight{ static_cast<double>(w) };
+        //     }
+        // }
 
         template <typename Type>
         class Randomizable
@@ -209,7 +303,7 @@ namespace Slate::Machine_Learning
             bool is_closeness_measure() const
             {
                 auto const& organisms = Meta::cast<Type>(*this).organisms();
-                return !(organisms.size() == 1 || organisms[0].score() > organisms[1].score() && organisms[0] > organisms[1]);
+                return !(organisms.size() == 1 || (organisms[0].score() > organisms[1].score() && organisms[0] > organisms[1]));
             }
         };
 

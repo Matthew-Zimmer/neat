@@ -12,7 +12,7 @@ add_subdirectory(test)
 target_compile_features(neat INTERFACE cxx_std_17)
 target_compile_features(neat_test PUBLIC cxx_std_17)
 
-set(CMAKE_CXX_FLAGS "-fmax-errors=1")
+#set(CMAKE_CXX_FLAGS "-fmax-errors=1")
 
 install(TARGETS neat EXPORT neat DESTINATION lib/neat)
 install(EXPORT neat DESTINATION lib/neat)

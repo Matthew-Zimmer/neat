@@ -52,13 +52,18 @@ public:
 
 class Network : public Is<Network, 
     Variables<
-        Neural_Network::V::Nodes<My_Node>, 
-        Neural_Network::Fixed_Size_Output<My_Node, 1>>, 
+        Neural_Network::V::Nodes<My_Node>  >,//, 
+        //Neural_Network::Fixed_Size_Output<My_Node, 1>>, 
     Features<
         Neural_Network::Dynamic, 
-        Neural_Network::Evaluatable, 
         Neural_Network::Sigmoid_Normalization>>
-{};
+{
+public:
+    auto outputs()
+    {
+        return Math::Vector<1, My_Node>{ My_Node{ 1 } };
+    }
+};
 
 class Neural_Network_Test : public Unit_Test<Neural_Network_Test>
 {
@@ -78,7 +83,7 @@ public:
 
     auto run(Test<1>)
     {
-        double d = network(My_Node{ 1 })[0].value();
+        double d = network(Math::Vector<1, double>{ 1 })[0].value();
         std::cout << d << std::endl;
         return "dynamic evaluate"_name = Value{ d } == Expected_Value{ 1.0 }.within(0.01);
     }

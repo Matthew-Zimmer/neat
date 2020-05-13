@@ -11,23 +11,6 @@
 #include <reflection/reflection.hpp>
 #include <reflection/variables.hpp>
 
-/*
-    template <typename Type>
-    constexpr bool False = false;
-
-    template <typename Type>
-    void FAIL()
-    {
-        static_assert(False<Type>);
-    }
-
-    template <typename Type>
-    void FAIL(Type)
-    {
-        static_assert(False<Type>);
-    }
-*/
-
 namespace Slate::Machine_Learning
 {
     namespace Node
@@ -86,52 +69,42 @@ namespace Slate::Machine_Learning
         template <typename Type>
         class Dynamic 
         {
+            auto& operator()(std::size_t id, std::unordered_map<std::size_t, double>& values)
+            {
+                if (auto v = values.find(id); v != values.end())
+                {
+                    return v->second;
+                }
+                else
+                {
+                    auto inputs = Meta::cast<Type>(*this)[id].inputs();
+                    values[id] = Meta::cast<Type>(*this).normalize(std::accumulate(inputs.begin(), inputs.end(), 0.0, [&](double x, auto const& y){ return x + Meta::cast<Type>(*this)(y.input_id(), values) * y.weight(); }));
+                    return values[id];
+                }
+            }
         public:
             auto& operator[](std::size_t id)
             {
                 return Meta::cast<Type>(*this).nodes().try_emplace(id, id).first->second;
             }
-        };
 
-        template <typename Type>
-        class Evaluatable
-        {
-            template <typename Input>
-            auto& operator()(std::size_t id, std::unordered_map<std::size_t, Input>& values)
-            {
-                if (values.find(id) != values.end())
-                {
-                    return values[id];
-                }
-                else
-                {
-                    auto inputs = Meta::cast<Type>(*this)[id].inputs();
-                    values[id].value() = Meta::cast<Type>(*this).normalize(std::accumulate(inputs.begin(), inputs.end(), 0.0, [&](double x, auto const& y){ return x + Meta::cast<Type>(*this)(y.input_id(), values).value() * y.weight(); }));
-                    return values[id];
-                }
-            }
-        public:
             template <std::size_t Dim, typename Input>
-            auto operator()(Math::Vector<Dim, Input> const& input) // requires(requires(Type x){ x[0]; })
+            auto operator()(Math::Vector<Dim, Input> const& input)
             {
-                std::unordered_map<std::size_t, Input> values;
+                std::unordered_map<std::size_t, double> values;
                 std::size_t c{ 0 };
                 for (auto& x : input)
                     values[c++] = x;
                 auto v = Meta::cast<Type>(*this).outputs();
                 for (auto& x : v)
-                    x.value() = Meta::cast<Type>(*this)(x.id(), values).value();
+                    x.value() = Meta::cast<Type>(*this)(x.id(), values);
                 return v;
             }
-            template <typename T, typename ... Types>
-            auto operator()(T&& arg, Types&& ... args) // requires(requires(Type x){ x[0]; })
-            {
-                return Meta::cast<Type>(*this)(Math::Vector<sizeof...(Types) + 1, std::remove_reference_t<T>>{ std::forward<T>(arg), std::forward<Types>(args)... });
-            }
-            // template <typename Input>
-            // auto operator()(Input const& input) // requires(!requires(Type x){ x[0]; })
+
+            // template <typename T, typename ... Types>
+            // auto operator()(T&& arg, Types&& ... args)
             // {
-            //     //do fancy matrix multiplication
+            //     return Meta::cast<Type>(*this)(Math::Vector<sizeof...(Types) + 1, std::remove_reference_t<T>>{ std::forward<T>(arg), std::forward<Types>(args)... });
             // }
         };
 
@@ -152,81 +125,6 @@ namespace Slate::Machine_Learning
             auto outputs() const
             {
                 return Math::Vector<Count, Node_Type>{};
-            }
-        };
-
-        // namespace Detail
-        // {
-        //     class Input
-        //     {
-        //     public:
-        //         std::size_t id;
-        //         constexpr explicit Input(std::size_t id) : id{ id }
-        //         {}
-        //     };
-        //     class Output
-        //     {
-        //     public:
-        //         std::size_t id;
-        //         constexpr explicit Output(std::size_t id) : id{ id }
-        //         {}
-        //     };
-        //     class Weight
-        //     {
-        //     public:
-        //         double weight;
-        //         constexpr explicit Weight(double w) : weight{ w }
-        //         {}
-        //     };
-        // }
-
-        // namespace Literals
-        // {
-        //     constexpr Detail::Input operator""_input(unsigned long long num) noexcept
-        //     {
-        //         return Detail::Input{ static_cast<std::size_t>(num) };
-        //     }
-        //     constexpr Detail::Output operator""_output(unsigned long long num) noexcept
-        //     {
-        //         return Detail::Output{ static_cast<std::size_t>(num) };
-        //     }
-        //     constexpr Detail::Weight operator""_weight(long double w) noexcept
-        //     {
-        //         return Detail::Weight{ static_cast<double>(w) };
-        //     }
-        // }
-
-        template <typename Type>
-        class Randomizable
-        {
-        public:
-            void randomize() 
-            {
-
-            }
-            void randomly_adjust_weight() 
-            {
-                auto& inputs = Random::element(Meta::cast<Type>(*this).nodes()).inputs();
-                auto& weight = Random::element(inputs).weight();
-                weight = std::clamp(weight + Random::number(Meta::cast<Type>(*this).weight_adjustment_delta()), 0.0, 1.0);
-            }
-            void randomly_change_weight() 
-            {
-                auto& inputs = Random::element(Meta::cast<Type>(*this).nodes()).inputs();
-                auto& weight = Random::element(inputs).weight();
-                weight = Random::number(0.0, 1.0);
-            }
-            void randomly_add_connection() 
-            {
-                auto& input_node = Random::element(Meta::cast<Type>(*this).nodes());
-                auto& output_node = Random::element(input_node.unconnected_nodes());
-                input_node.connect_to(output_node);
-            }
-            void randomly_add_node() 
-            {
-                auto& node = Random::element(Meta::cast<Type>(*this).nodes());
-                auto& connection = Random::element(node.inputs());
-                connection.split();
             }
         };
     }
@@ -317,14 +215,6 @@ namespace Slate::Machine_Learning
                 std::vector<Organism> next_generation(Meta::cast<Type>(*this).organisms().size());
                 Organism* p1, *p2;
                 auto weights = Meta::cast<Type>(*this).breeding_weights();
-                // int k = 1;
-                // for (auto& o : Meta::cast<Type>(*this).organisms())
-                //     if (!(k++ % 10))
-                //         k = 1, std::cout << o.score() << std::endl;
-                // std::cout << "----------------------" << std::endl;
-                // static int i = 0;
-                // if (i++ == 5)
-                //     std::exit(1);
                 std::discrete_distribution<std::size_t> dis{ weights.begin(), weights.end() };
                 for (std::size_t i = 0; i < next_generation.size();i++)
                 {
@@ -332,7 +222,6 @@ namespace Slate::Machine_Learning
                     p2 = &Random::element(Meta::cast<Type>(*this).organisms(), dis);
                     next_generation[i] = p1->breed_with(*p2);
                 }
-
                 Meta::cast<Type>(*this).organisms() = std::move(next_generation);
             }
 
@@ -379,7 +268,6 @@ namespace Slate::Machine_Learning
                     Meta::cast<Type>(*this).breed();
                     Meta::cast<Type>(*this).mutate();
                     Meta::cast<Type>(*this).evaluate();
-                    //std::cout << g++ << ", " << Meta::cast<Type>(*this).best().value() << std::endl;
                 }
                 return Meta::cast<Type>(*this).best();
             }
@@ -396,94 +284,15 @@ namespace Slate::Machine_Learning
         {
         public: 
             using Organism = Organism_Type;
-            Specie(std::size_t population_size) : Is<Specie<Organism_Type>, Variables<V::Organisms<Organism_Type>, V::Population_Size>, Features<Populator, Evaluator, Breeder, Mutator, Evolvable>>{ V::Population_Size{ population_size } }
+            Specie(std::size_t population_size) : Specie<Organism_Type>::Inherit{ V::Population_Size{ population_size } }
             {}
         };
     }
-    
+ /*   
     namespace Neat 
     {
-        namespace V
-        {
-            using ::Slate::Variable::Base;
-            class Weight : public Base<double> 
-            {
-            public:
-                auto& weight() { return this->variable(); }
-                auto const& weight() const { return this->variable(); }
-            };
-
-            class Value : public Base<double> 
-            {
-            public:
-                auto& value() { return this->variable(); }
-                auto const& value() const { return this->variable(); }
-            };
-
-            class Id : public Base<std::size_t> 
-            {
-            public:
-                auto& id() { return this->variable(); }
-                auto const& id() const { return this->variable(); }
-            };
-        }
-
-        class Connection : public Is<Connection, Variables<V::Weight>>
-        {
-        public:
-            std::size_t input_id() const
-            {
-                return 0;
-            }
-
-            void split()
-            {
-
-            }
-        };
-
-        class Node;
-
-        namespace V 
-        {
-            class Inputs : public Base<std::vector<Connection>>
-            {
-            public:
-                auto& inputs() { return this->variable(); }
-                auto const& inputs() const { return this->variable(); }
-            };
-
-            class Unconnected_Nodes : public Base<std::vector<Node>>
-            {
-            public:
-                auto& unconnected_nodes() { return this->variable(); }
-                auto const& unconnected_nodes() const { return this->variable(); }
-            };
-        }
-
-        class Node : public Is<Node, Variables<V::Value, V::Id, V::Inputs, V::Unconnected_Nodes>>
-        {
-            void remove_unconnectedness(Node const& n)
-            {
-                unconnected_nodes().erase(std::remove(unconnected_nodes().begin(), unconnected_nodes().end(), n), unconnected_nodes().end());
-            }
-        public:
-            void connect_to(Node& n) 
-            {
-                inputs().push_back(Connection{});
-                
-                remove_unconnectedness(n);
-                n.remove_unconnectedness(*this);
-            }
-
-            friend bool operator==(Node const& left, Node const& right)
-            {
-                return left.id() == right.id();
-            }
-        };
-
         template <typename Type>
-        class Brain : public Is<Brain<Type>, Variables<Neural_Network::V::Nodes<Node>>, Features<Neural_Network::Dynamic, Neural_Network::Randomizable, Neural_Network::Sigmoid_Normalization, Neural_Network::Evaluatable>>
+        class Brain : public Is<Brain<Type>, Variables<Neural_Network::V::Nodes<Node>>, Features<Neural_Network::Dynamic, Neural_Network::Randomizable, Neural_Network::Sigmoid_Normalization>>
         {
         public:
             double weight_adjustment_delta()
@@ -587,13 +396,6 @@ namespace Slate::Machine_Learning
             using Required_Features = Features<Mutator, Evaluator, Breeder, Randomizer>;
             using Required_Variables = Variables<V::Brain<Type>, V::Fitness>;
         };
-
-        template <typename Type>
-        class Brainless_Creature
-        {
-        public:
-            using Required_Features = Features<Mutator, Evaluator, Breeder, Randomizer>;
-            using Required_Variables = Variables<V::Fitness>;
-        };
     }
+*/
 }
